@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DX Library | Digital Literary Space</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #f6f3ee;
+  --text: #1f1f1f;
+  --accent: #bfa37c;
+  --card: #ffffff;
+}
+
+body.dark{
+  --bg:#141414;
+  --text:#f1f1f1;
+  --card:#1f1f1f;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:0.3s ease;
+  line-height:1.6;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  position:sticky;
+  top:0;
+  background:var(--bg);
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Playfair Display', serif;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text);
+  margin-left:25px;
+  font-size:14px;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+.hero{
+  text-align:center;
+  padding:100px 8% 80px;
+}
+
+.hero h1{
+  font-family:'Playfair Display', serif;
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:600px;
+  margin:auto;
+  font-size:15px;
+  opacity:0.8;
+}
+
+.hero button{
+  margin-top:30px;
+  padding:12px 28px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  border-radius:30px;
+  transition:0.3s;
+}
+
+.hero button:hover{
+  opacity:0.8;
+}
+
+.section{
+  padding:80px 8%;
+}
+
+.section-title{
+  font-family:'Playfair Display', serif;
+  font-size:28px;
+  margin-bottom:40px;
+}
+
+.library{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:30px;
+}
+
+.book{
+  background:var(--card);
+  padding:25px;
+  border-radius:15px;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.book:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.book h3{
+  font-family:'Playfair Display', serif;
+  margin-bottom:10px;
+}
+
+.book p{
+  font-size:14px;
+  opacity:0.7;
+  margin-bottom:15px;
+}
+
+.book button{
+  padding:8px 18px;
+  border:none;
+  background:var(--accent);
+  color:white;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+.search-bar{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.search-bar input{
+  padding:10px 20px;
+  width:300px;
+  max-width:80%;
+  border-radius:30px;
+  border:1px solid #ddd;
+}
+
+.newsletter{
+  text-align:center;
+  background:var(--card);
+  padding:60px 8%;
+  border-radius:20px;
+}
+
+.newsletter input{
+  padding:10px 15px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  margin-right:10px;
+}
+
+.newsletter button{
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:13px;
+  opacity:0.6;
+}
+
+@media(max-width:768px){
+  .hero h1{
+    font-size:34px;
+  }
+  nav{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">DX Library</div>
+  <nav>
+    <a href="about.html">About</a>
+    <a href="books.html">Books</a>
+    <a href="contact.html">Contact</a>
+    <a href="#" onclick="toggleDark()">🌙</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>A Quiet Place for Words</h1>
+  <p>A curated digital library of stories, reflections, and prose written with honesty and depth.</p>
+  <button onclick="location.href='books.html'">Explore Collection</button>
+</section>
+
+<section class="section">
+  <div class="search-bar">
+    <input type="text" placeholder="Search your next read...">
+  </div>
+
+  <div class="section-title">Featured Works</div>
+
+  <div class="library">
+    <div class="book">
+      <h3>Autumn in April</h3>
+      <p>A poetic reflection on heartbreak through the metaphor of autumn.</p>
+      <button onclick="location.href='autumn.html'">Read</button>
+    </div>
+
+    <div class="book">
+      <h3>Ten of April</h3>
+      <p>A story about loss, memory, and quiet endings.</p>
+      <button onclick="location.href='tenofapril.html'">Read</button>
+    </div>
+
+    <div class="book">
+      <h3>Am I Not Worthy?</h3>
+      <p>Personal reflections on love, value, and emotional survival.</p>
+      <button onclick="location.href='worthy.html'">Read</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="newsletter">
+    <h2>Stay Connected</h2>
+    <p>Receive updates when new works are published.</p>
+    <br>
+    <input type="email" placeholder="Your email">
+    <button>Subscribe</button>
+  </div>
+</section>
+
+<footer>
+  © 2026 DX Library. All rights reserved.
+</footer>
+
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
