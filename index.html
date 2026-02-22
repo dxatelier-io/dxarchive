@@ -12,50 +12,66 @@
   --bg:#f4efe7;
   --text:#1b1b1b;
   --accent:#9c7c5b;
-  --card:#ffffff;
   --line:#e5ded4;
 }
 
 body.dark{
-  --bg:#111111;
+  --bg:#0f0f0f;
   --text:#f1f1f1;
-  --card:#1a1a1a;
-  --line:#2a2a2a;
+  --line:#1f1f1f;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Inter', sans-serif;
   background:var(--bg);
   color:var(--text);
   transition:0.4s ease;
-  line-height:1.8;
-  letter-spacing:0.3px;
+  overflow-x:hidden;
+  cursor:url('https://cur.cursors-4u.net/cursors/cur-9/cur817.cur'), auto;
 }
 
+/* Page fade transition */
+body.fade-out{
+  opacity:0;
+  transition:opacity 0.5s ease;
+}
+
+/* Header */
 header{
   padding:25px 10%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   border-bottom:1px solid var(--line);
+  position:fixed;
+  width:100%;
+  background:var(--bg);
+  z-index:1000;
 }
 
 .logo{
   font-family:'Cormorant Garamond', serif;
-  font-size:28px;
+  font-size:26px;
   letter-spacing:2px;
+}
+
+/* Hamburger */
+.menu-toggle{
+  display:none;
+  font-size:22px;
+  cursor:pointer;
+}
+
+nav{
+  display:flex;
+  gap:30px;
 }
 
 nav a{
   text-decoration:none;
   color:var(--text);
-  margin-left:30px;
   font-size:14px;
   opacity:0.7;
   transition:0.3s;
@@ -66,126 +82,137 @@ nav a:hover{
   color:var(--accent);
 }
 
+/* Mobile menu */
+@media(max-width:768px){
+  nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100vh;
+    width:70%;
+    background:var(--bg);
+    flex-direction:column;
+    padding:100px 40px;
+    transition:0.4s;
+  }
+  nav.active{
+    right:0;
+  }
+  .menu-toggle{
+    display:block;
+  }
+}
+
+/* Parallax hero */
 .hero{
-  padding:140px 10% 120px;
-  max-width:900px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 10%;
+  background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover fixed;
+  color:white;
+  position:relative;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+  position:relative;
+  max-width:700px;
 }
 
 .hero h1{
   font-family:'Cormorant Garamond', serif;
   font-size:64px;
-  font-weight:600;
-  margin-bottom:30px;
-}
-
-.hero p{
-  max-width:600px;
-  font-size:17px;
-  opacity:0.8;
+  margin-bottom:20px;
 }
 
 .hero button{
-  margin-top:40px;
-  padding:12px 30px;
-  border:1px solid var(--accent);
+  margin-top:30px;
+  padding:12px 28px;
+  border:1px solid white;
   background:none;
-  color:var(--accent);
+  color:white;
   cursor:pointer;
   transition:0.3s;
 }
 
 .hero button:hover{
-  background:var(--accent);
-  color:white;
+  background:white;
+  color:black;
 }
 
+/* Section */
 .section{
-  padding:100px 10%;
-  border-top:1px solid var(--line);
+  padding:120px 10%;
 }
 
-.section-title{
+.section h2{
   font-family:'Cormorant Garamond', serif;
   font-size:40px;
   margin-bottom:60px;
 }
 
-.library{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:50px;
-}
-
-.book{
-  padding:40px;
-  border:1px solid var(--line);
-  transition:0.4s;
+/* Book opening animation */
+.book-preview{
+  width:200px;
+  height:260px;
+  background:#9c7c5b;
   position:relative;
-}
-
-.book:hover{
-  transform:translateY(-6px);
-  border-color:var(--accent);
-}
-
-.book h3{
-  font-family:'Cormorant Garamond', serif;
-  font-size:26px;
-  margin-bottom:15px;
-}
-
-.book p{
-  font-size:14px;
-  opacity:0.7;
-  margin-bottom:25px;
-}
-
-.book button{
-  background:none;
-  border:none;
-  font-size:13px;
-  letter-spacing:1px;
-  color:var(--accent);
   cursor:pointer;
+  transform-style:preserve-3d;
+  transition:transform 1s;
 }
 
-.book button:hover{
-  text-decoration:underline;
+.book-preview:hover{
+  transform:rotateY(-30deg);
 }
 
-.footer{
-  padding:60px 10%;
-  border-top:1px solid var(--line);
+.book-preview::before{
+  content:'DX Manuscript';
+  position:absolute;
+  color:white;
+  font-family:'Cormorant Garamond', serif;
+  padding:20px;
+}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-content{
+  background:var(--bg);
+  padding:40px;
+  max-width:500px;
+}
+
+.modal button{
+  margin-top:20px;
+}
+
+/* Footer */
+footer{
+  padding:60px;
   text-align:center;
+  border-top:1px solid var(--line);
   font-size:13px;
-  opacity:0.6;
 }
 
-/* Fade animation */
-.fade{
-  opacity:0;
-  transform:translateY(20px);
-  animation:fadeIn 1.2s ease forwards;
-}
-
-@keyframes fadeIn{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* Responsive */
-@media(max-width:768px){
-  .hero{
-    padding:100px 8%;
-  }
-  .hero h1{
-    font-size:42px;
-  }
-  nav{
-    display:none;
-  }
+/* Ambient audio hidden */
+audio{
+  display:none;
 }
 </style>
 </head>
@@ -194,55 +221,74 @@ nav a:hover{
 
 <header>
   <div class="logo">DX Archive</div>
-  <nav>
-    <a href="about.html">About</a>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <a href="index.html">Home</a>
     <a href="books.html">Collection</a>
-    <a href="journal.html">Journal</a>
-    <a href="#" onclick="toggleDark()">Mode</a>
+    <a href="#" onclick="toggleDark()">Dark Mode</a>
   </nav>
 </header>
 
-<section class="hero fade">
-  <h1>Where Words Are Given Room to Breathe</h1>
-  <p>
-    DX Archive is an independent literary house — a quiet archive of longing, reflection, and intimate prose.  
-  </p>
-  <button onclick="location.href='books.html'">Enter The Library</button>
-</section>
-
-<section class="section fade">
-  <div class="section-title">Selected Works</div>
-
-  <div class="library">
-
-    <div class="book">
-      <h3>Autumn in April</h3>
-      <p>A meditation on love that blooms in spring yet falls like autumn.</p>
-      <button onclick="location.href='autumn.html'">Read Manuscript →</button>
-    </div>
-
-    <div class="book">
-      <h3>Ten of April</h3>
-      <p>A quiet unraveling of loss told in dated fragments.</p>
-      <button onclick="location.href='tenofapril.html'">Read Manuscript →</button>
-    </div>
-
-    <div class="book">
-      <h3>Am I Not Worthy?</h3>
-      <p>Personal reflections on value, absence, and emotional survival.</p>
-      <button onclick="location.href='worthy.html'">Read Manuscript →</button>
-    </div>
-
+<section class="hero">
+  <div class="hero-content">
+    <h1>Where Words Are Given Room to Breathe</h1>
+    <p>An independent literary archive.</p>
+    <button onclick="goPage('books.html')">Enter Library</button>
   </div>
 </section>
 
-<div class="footer">
-  © 2026 DX Library. All rights reserved.
+<section class="section">
+  <h2>Preview Manuscript</h2>
+  <div class="book-preview" onclick="openModal()"></div>
+</section>
+
+<footer>
+  © 2026 DX Archive. All rights reserved.
+</footer>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Chapter Preview</h3>
+    <p>“Some stories do not end. They simply fade into quieter rooms.”</p>
+    <button onclick="closeModal()">Close</button>
+  </div>
 </div>
 
+<!-- Ambient piano -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
+</audio>
+
 <script>
+/* Page transition */
+function goPage(url){
+  document.body.classList.add("fade-out");
+  setTimeout(()=>{window.location=url},500);
+}
+
+/* Dark mode save */
 function toggleDark(){
   document.body.classList.toggle("dark");
+  localStorage.setItem("theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+}
+if(localStorage.getItem("theme")==="dark"){
+  document.body.classList.add("dark");
+}
+
+/* Mobile menu */
+function toggleMenu(){
+  document.getElementById("nav").classList.toggle("active");
+}
+
+/* Modal */
+function openModal(){
+  document.getElementById("modal").style.display="flex";
+}
+function closeModal(){
+  document.getElementById("modal").style.display="none";
 }
 </script>
 
