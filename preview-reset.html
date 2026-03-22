@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Preview — Autumn in April</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f0f12;
+  --card:#18181c;
+  --soft:#232329;
+  --text:#f5f5f7;
+  --muted:#a1a1aa;
+  --accent:#ffffff;
+  --accent-soft:#e5e5e5;
+  --buy:#10b981;
+  --buy-hover:#34d399;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top, #1a1a22, var(--bg) 60%);
+  color:var(--text);
+}
+
+.container{
+  width:min(820px,92%);
+  margin:auto;
+}
+
+.header{
+  padding:70px 0 30px;
+  text-align:center;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:42px;
+  margin:0;
+}
+
+.sub{
+  color:var(--muted);
+  margin-top:10px;
+  font-size:14px;
+  letter-spacing:2px;
+}
+
+.preview-card{
+  background:linear-gradient(135deg,#1d1d24,#16161b);
+  border:1px solid #2b2b35;
+  border-radius:28px;
+  padding:60px clamp(24px,5vw,70px);
+  line-height:1.9;
+  font-size:18px;
+}
+
+.preview-card h2{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+  margin-top:0;
+  margin-bottom:30px;
+  letter-spacing:1px;
+}
+
+.preview-card p{
+  margin:22px 0;
+  color:#e4e4e7;
+}
+
+.fade-end{
+  margin-top:50px;
+  padding-top:40px;
+  position:relative;
+}
+
+.fade-end:after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:120px;
+  background:linear-gradient(to bottom, rgba(15,15,18,0) 0%, var(--bg) 70%);
+}
+
+.end-note{
+  text-align:center;
+  margin-top:60px;
+  color:var(--muted);
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.actions{
+  margin:60px 0 100px;
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:16px 34px;
+  border-radius:14px;
+  border:none;
+  font-size:15px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.btn-back{
+  background:var(--soft);
+  color:var(--text);
+}
+
+.btn-back:hover{background:#2c2c34}
+
+.btn-buy{
+  background:var(--buy);
+  color:#fff;
+}
+
+.btn-buy:hover{background:var(--buy-hover)}
+
+footer{
+  border-top:1px solid #ffffff10;
+  padding:40px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>RESET</h1>
+    <div class="sub">BOOK PREVIEW — PROLOGUE</div>
+  </div>
+
+  <div class="preview-card">
+    <h2>PROLOG: AKU TIDAK IKHLAS</h2>
+
+    <p>Semua orang bilang aku harus ikhlas.</p>
+
+    <p>Mereka bilang waktu akan menyembuhkan, bahwa pada akhirnya semua akan terasa biasa saja, bahwa aku hanya perlu menerima dan melanjutkan hidup seperti tidak pernah terjadi apa-apa.</p>
+
+    <p>Aku mengerti maksud mereka.<br>Tapi aku tidak bisa.</p>
+
+    <p><strong>Aku tidak ikhlas.</strong></p>
+
+    <p>Aku hanya berhenti mengejar.</p>
+
+    <p>Ada perbedaan yang tidak semua orang mau akui— tentang merelakan dan tentang menyerah. Dan aku tidak sedang merelakanmu.</p>
+
+    <p>Aku hanya kehabisan cara untuk membuatmu bertahan.</p>
+
+    <p>Aku sudah mencoba banyak hal di kepalaku. Mengulang percakapan yang sudah selesai. Membayangkan versi diriku yang tidak melakukan kesalahan itu. Mencari satu kemungkinan kecil di mana semuanya tidak berakhir seperti ini.</p>
+
+    <p>Tapi semakin kupikirkan, semakin jelas satu hal yang tidak bisa kuhindari— aku memang kehilanganmu.</p>
+
+    <p>Dan yang lebih menyakitkan dari itu, aku tahu persis kenapa.</p>
+
+    <p>Kamu tidak pergi karena kamu tidak mencintaiku. Kamu pergi karena aku tidak menjagamu dengan benar.</p>
+
+    <p>Itu kalimat yang paling ingin kuhapus dari hidupku. Tapi justru itu yang terus tinggal.</p>
+
+    <p>Aku pernah berpikir cinta adalah tentang bertahan. Tentang siapa yang lebih kuat menghadapi luka, tentang siapa yang tidak menyerah lebih dulu.</p>
+
+    <p><strong>Aku salah.</strong></p>
+
+    <p>Cinta bukan soal siapa yang bertahan paling lama. Cinta adalah tentang bagaimana membuat seseorang tidak ingin pergi.</p>
+
+    <p>Dan aku gagal di situ.</p>
+
+    <p>Aku tidak menyesal pernah mencintaimu. Aku menyesal cara aku menjagamu.</p>
+
+    <div class="fade-end">
+      <p>Kalau saja waktu bisa diulang, aku tahu persis apa yang harus kuperbaiki. Aku tahu kapan aku harus jujur dalam hal-hal sepele yang berakibat besar. Aku tahu kapan aku harus menahan ego.</p>
+    </div>
+
+    <div class="end-note">Preview ends here — continue the journey in the full book</div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-back" onclick="location.href='index.html'">← Back to Library</button>
+    <button class="btn btn-buy" onclick="location.href='payment.html'">Buy Full Book</button>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 DX Archive — digital sanctuary of writings
+</footer>
+
+</body>
+</html>
