@@ -1,192 +1,346 @@
-import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { BookOpen, Search, Star } from "lucide-react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DX Archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#18181c;
+      --soft:#232329;
+      --text:#f5f5f7;
+      --muted:#a1a1aa;
+      --accent:#ffffff;
+      --accent-soft:#e5e5e5;
+      --buy:#10b981;
+      --buy-hover:#34d399;
+    }
 
-export default function DXArchive() {
-  const [search, setSearch] = useState("");
+    *{box-sizing:border-box}
 
-  // SAMPLE DATA (nanti bisa diganti database)
-  const books = [
-    {
-      title: "Autumn in April",
-      year: "2026",
-      description: "A story about love, loss, and the season that never truly leaves.",
-      price: 9.99,
-      featured: true,
-    },
-    {
-      title: "Ten of April",
-      year: "2026",
-      description: "Fragments of grief written in quiet nights.",
-      price: 7.99,
-      featured: false,
-    },
-    {
-      title: "Am I Not Worthy?",
-      year: "2026",
-      description: "Questions we ask ourselves after being left behind.",
-      price: 8.99,
-      featured: false,
-    },
-  ];
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:radial-gradient(circle at top, #1a1a22, var(--bg) 60%);
+      color:var(--text);
+    }
 
-  const filteredBooks = books.filter((b) =>
-    b.title.toLowerCase().includes(search.toLowerCase())
-  );
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
+      letter-spacing:.5px;
+      margin:0;
+    }
 
-  const featured = filteredBooks.filter((b) => b.featured);
-  const regular = filteredBooks.filter((b) => !b.featured);
+    .container{
+      width:min(1200px,92%);
+      margin:auto;
+    }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 text-white">
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_60%)]" />
-        <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 relative text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-              DX Archive
-            </h1>
-            <p className="mt-6 text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              digital sanctuary of writings
-            </p>
+    /* HERO */
+    .hero{
+      padding:120px 0 100px;
+      text-align:center;
+    }
 
-            <div className="mt-12 flex flex-wrap justify-center gap-4">
-              <Button className="rounded-2xl px-10 py-6 text-base bg-white text-black hover:bg-neutral-200">
-                Explore Collection
-              </Button>
-              <Button
-                variant="secondary"
-                className="rounded-2xl px-10 py-6 text-base bg-neutral-800 hover:bg-neutral-700"
-              >
-                Visit Bookstore
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+    .hero h1{
+      font-size:clamp(42px,6vw,72px);
+      font-weight:700;
+    }
 
-      {/* SEARCH BAR */}
-      <section className="border-t border-white/5 border-b border-white/5 bg-black/20 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex justify-center">
-          <div className="flex items-center gap-3">
-            <Search className="text-neutral-400" size={18} />
-            <Input
-              placeholder="Search titles..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-72 bg-neutral-900 border-neutral-800 rounded-xl"
-            />
-          </div>
-        </div>
-      </section>
+    .hero p{
+      color:var(--muted);
+      max-width:620px;
+      margin:28px auto 0;
+      line-height:1.8;
+      font-size:18px;
+    }
 
-      {/* FEATURED BOOK */}
-      {featured.length > 0 && (
-        <section className="max-w-6xl mx-auto px-6 py-20">
-          <div className="flex items-center gap-3 mb-10">
-            <Star className="text-yellow-400" />
-            <h2 className="text-2xl font-semibold tracking-wide">
-              Featured Book
-            </h2>
-          </div>
+    .hero-buttons{
+      margin-top:48px;
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
 
-          {featured.map((book, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <Card className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-neutral-700 rounded-3xl overflow-hidden">
-                <CardContent className="p-12">
-                  <Badge className="mb-6 bg-white/10 text-white border-white/20">
-                    Editor's Choice
-                  </Badge>
-                  <h3 className="text-4xl font-semibold leading-snug">
-                    {book.title}
-                  </h3>
-                  <p className="text-neutral-400 mt-3">Published {book.year}</p>
+    .btn{
+      padding:16px 32px;
+      border-radius:14px;
+      border:none;
+      font-size:15px;
+      cursor:pointer;
+      transition:.25s;
+    }
 
-                  <p className="text-neutral-300 mt-8 max-w-2xl leading-relaxed">
-                    {book.description}
-                  </p>
+    .btn-primary{
+      background:var(--accent);
+      color:#000;
+    }
 
-                  <div className="mt-10 flex gap-4">
-                    <Button className="rounded-xl bg-white text-black hover:bg-neutral-200">
-                      Preview
-                    </Button>
-                    <Button className="rounded-xl bg-emerald-600 hover:bg-emerald-500">
-                      Buy — ${book.price}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </section>
-      )}
+    .btn-primary:hover{background:var(--accent-soft)}
 
-      {/* LIBRARY */}
-      <section className="max-w-6xl mx-auto px-6 pb-28">
-        <h2 className="text-2xl font-semibold tracking-wide mb-12">
-          Complete Collection
-        </h2>
+    .btn-secondary{
+      background:var(--soft);
+      color:var(--text);
+    }
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {regular.map((book, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-            >
-              <Card className="group bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-all rounded-2xl overflow-hidden">
-                <CardContent className="p-6">
-                  <div className="flex justify-between items-start">
-                    <BookOpen className="text-neutral-500 group-hover:text-white transition" />
-                    <span className="text-xs text-neutral-600">{book.year}</span>
-                  </div>
+    .btn-secondary:hover{background:#2c2c34}
 
-                  <h3 className="mt-6 font-medium leading-snug line-clamp-2">
-                    {book.title}
-                  </h3>
+    /* SEARCH */
+    .search-section{
+      border-top:1px solid #ffffff10;
+      border-bottom:1px solid #ffffff10;
+      background:#00000030;
+      backdrop-filter:blur(6px);
+      padding:28px 0;
+      margin-bottom:70px;
+    }
 
-                  <p className="text-neutral-500 text-sm mt-3 line-clamp-3">
-                    {book.description}
-                  </p>
+    .search-box{
+      display:flex;
+      justify-content:center;
+    }
 
-                  <div className="mt-6 flex gap-2">
-                    <Button
-                      variant="secondary"
-                      className="flex-1 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200"
-                    >
-                      Preview
-                    </Button>
-                    <Button className="flex-1 rounded-xl bg-emerald-600 hover:bg-emerald-500">
-                      Buy
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    .search-box input{
+      width:min(420px,90%);
+      padding:14px 18px;
+      border-radius:12px;
+      border:1px solid #2a2a33;
+      background:var(--card);
+      color:var(--text);
+      font-size:14px;
+    }
 
-      {/* FOOTER */}
-      <footer className="border-t border-white/5 py-10 text-center text-neutral-500 text-sm">
-        © {new Date().getFullYear()} DX Archive — Digital Library of Writings
-      </footer>
+    .search-box input:focus{outline:none;border-color:#3a3a46}
+
+    /* FEATURED */
+    .section-title{
+      font-size:26px;
+      margin-bottom:26px;
+    }
+
+    .featured{
+      margin-bottom:100px;
+    }
+
+    .featured-card{
+      background:linear-gradient(135deg,#1d1d24,#16161b);
+      border:1px solid #2b2b35;
+      border-radius:28px;
+      padding:60px;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:6px 14px;
+      border-radius:999px;
+      font-size:12px;
+      background:#ffffff12;
+      border:1px solid #ffffff22;
+      margin-bottom:22px;
+      color:#fff;
+    }
+
+    .featured-card h3{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    .meta{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .desc{
+      color:#d4d4d8;
+      margin-top:28px;
+      max-width:640px;
+      line-height:1.8;
+    }
+
+    .featured-actions{
+      margin-top:38px;
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:26px;
+      margin-top:30px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid #2a2a33;
+      border-radius:18px;
+      padding:22px;
+      transition:.25s;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:260px;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#3a3a46;
+    }
+
+    .book-icon{
+      font-size:26px;
+      opacity:.7;
+    }
+
+    .card h4{
+      font-size:18px;
+      margin:18px 0 6px;
+      line-height:1.4;
+    }
+
+    .card p{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .card-actions{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+    }
+
+    .btn-preview{
+      flex:1;
+      background:#2a2a33;
+      color:#fff;
+    }
+
+    .btn-preview:hover{background:#34343f}
+
+    .btn-buy{
+      flex:1;
+      background:var(--buy);
+      color:#fff;
+    }
+
+    .btn-buy:hover{background:var(--buy-hover)}
+
+    footer{
+      border-top:1px solid #ffffff10;
+      margin-top:120px;
+      padding:40px 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+
+  <section class="hero container">
+    <h1>DX Archive</h1>
+    <p>
+      digital sanctuary of writings
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn btn-primary" onclick="scrollToCollection()">Explore Collection</button>
+      <button class="btn btn-secondary" onclick="scrollToCollection()">Visit Bookstore</button>
     </div>
-  );
-}
+  </section>
+
+  <section class="search-section">
+    <div class="container search-box">
+      <input type="text" placeholder="Search titles..." id="searchInput" onkeyup="filterBooks()">
+    </div>
+  </section>
+
+  <section class="container featured">
+    <div class="section-title">Featured Book</div>
+    <div class="featured-card">
+      <div class="badge">Editor's Choice</div>
+      <h3>Autumn in April</h3>
+      <div class="meta">Published 2026</div>
+      <div class="desc">
+        A reflective story about love, loss, and memories that linger
+        like autumn leaves long after the season ends.
+      </div>
+      <div class="featured-actions">
+        <button class="btn btn-secondary">Preview</button>
+        <button class="btn btn-buy">Buy — $9.99</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="collection">
+    <div class="section-title">Complete Collection</div>
+
+    <div class="grid" id="bookGrid">
+      <div class="card" data-title="Ten of April">
+        <div>
+          <div class="book-icon">📖</div>
+          <h4>Ten of April</h4>
+          <p>Fragments of grief written in quiet nights and long silences.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-preview">Preview</button>
+          <button class="btn btn-buy">Buy</button>
+        </div>
+      </div>
+
+      <div class="card" data-title="Am I Not Worthy">
+        <div>
+          <div class="book-icon">📖</div>
+          <h4>Am I Not Worthy?</h4>
+          <p>Questions we whisper to ourselves after being left behind.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-preview">Preview</button>
+          <button class="btn btn-buy">Buy</button>
+        </div>
+      </div>
+
+      <div class="card" data-title="What Happens When I Stop">
+        <div>
+          <div class="book-icon">📖</div>
+          <h4>What Happens When I Stop?</h4>
+          <p>A prose journey about surrendering in a one-sided love.</p>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-preview">Preview</button>
+          <button class="btn btn-buy">Buy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 DX Archive — Digital Library of Writings
+  </footer>
+
+  <script>
+    function scrollToCollection(){
+      document.getElementById('collection').scrollIntoView();
+    }
+
+    function filterBooks(){
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        card.style.display = title.includes(input) ? 'flex' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
