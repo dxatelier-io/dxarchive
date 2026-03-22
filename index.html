@@ -277,9 +277,7 @@
         <button class="btn btn-secondary" onclick="location.href='preview-reset.html'">
   Preview
 </button>
-        <button class="btn btn-buy" onclick="location.href='payment.html'">
-  Buy — $9.99
-</button>
+        <button class="btn btn-buy" onclick="demoNotice()">Buy — Rp0</button>
       </div>
     </div>
   </section>
@@ -333,6 +331,10 @@
         card.style.display = title.includes(input) ? 'flex' : 'none';
       });
     }
+
+    function demoNotice(){
+  alert("This book is not available for purchase yet.\nDX Archive is currently in demo version.\n\nThank you for your interest 🤍");
+}
   </script>
 
 </body>
