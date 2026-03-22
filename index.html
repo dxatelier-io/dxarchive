@@ -1,296 +1,192 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DX Archive | Literary House</title>
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { BookOpen, Search, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+export default function DXArchive() {
+  const [search, setSearch] = useState("");
 
-<style>
-:root{
-  --bg:#f4efe7;
-  --text:#1b1b1b;
-  --accent:#9c7c5b;
-  --line:#e5ded4;
-}
+  // SAMPLE DATA (nanti bisa diganti database)
+  const books = [
+    {
+      title: "Autumn in April",
+      year: "2026",
+      description: "A story about love, loss, and the season that never truly leaves.",
+      price: 9.99,
+      featured: true,
+    },
+    {
+      title: "Ten of April",
+      year: "2026",
+      description: "Fragments of grief written in quiet nights.",
+      price: 7.99,
+      featured: false,
+    },
+    {
+      title: "Am I Not Worthy?",
+      year: "2026",
+      description: "Questions we ask ourselves after being left behind.",
+      price: 8.99,
+      featured: false,
+    },
+  ];
 
-body.dark{
-  --bg:#0f0f0f;
-  --text:#f1f1f1;
-  --line:#1f1f1f;
-}
+  const filteredBooks = books.filter((b) =>
+    b.title.toLowerCase().includes(search.toLowerCase())
+  );
 
-*{margin:0;padding:0;box-sizing:border-box;}
+  const featured = filteredBooks.filter((b) => b.featured);
+  const regular = filteredBooks.filter((b) => !b.featured);
 
-body{
-  font-family:'Inter', sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  transition:0.4s ease;
-  overflow-x:hidden;
-  cursor:url('https://cur.cursors-4u.net/cursors/cur-9/cur817.cur'), auto;
-}
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 text-white">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.05),transparent_60%)]" />
+        <div className="max-w-6xl mx-auto px-6 pt-28 pb-24 relative text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+              DX Archive
+            </h1>
+            <p className="mt-6 text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+              digital sanctuary of writings
+            </p>
 
-/* Page fade transition */
-body.fade-out{
-  opacity:0;
-  transition:opacity 0.5s ease;
-}
+            <div className="mt-12 flex flex-wrap justify-center gap-4">
+              <Button className="rounded-2xl px-10 py-6 text-base bg-white text-black hover:bg-neutral-200">
+                Explore Collection
+              </Button>
+              <Button
+                variant="secondary"
+                className="rounded-2xl px-10 py-6 text-base bg-neutral-800 hover:bg-neutral-700"
+              >
+                Visit Bookstore
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-/* Header */
-header{
-  padding:25px 10%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-  position:fixed;
-  width:100%;
-  background:var(--bg);
-  z-index:1000;
-}
+      {/* SEARCH BAR */}
+      <section className="border-t border-white/5 border-b border-white/5 bg-black/20 backdrop-blur">
+        <div className="max-w-6xl mx-auto px-6 py-6 flex justify-center">
+          <div className="flex items-center gap-3">
+            <Search className="text-neutral-400" size={18} />
+            <Input
+              placeholder="Search titles..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-72 bg-neutral-900 border-neutral-800 rounded-xl"
+            />
+          </div>
+        </div>
+      </section>
 
-.logo{
-  font-family:'Cormorant Garamond', serif;
-  font-size:26px;
-  letter-spacing:2px;
-}
+      {/* FEATURED BOOK */}
+      {featured.length > 0 && (
+        <section className="max-w-6xl mx-auto px-6 py-20">
+          <div className="flex items-center gap-3 mb-10">
+            <Star className="text-yellow-400" />
+            <h2 className="text-2xl font-semibold tracking-wide">
+              Featured Book
+            </h2>
+          </div>
 
-/* Hamburger */
-.menu-toggle{
-  display:none;
-  font-size:22px;
-  cursor:pointer;
-}
+          {featured.map((book, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <Card className="bg-gradient-to-br from-neutral-900 to-neutral-800 border-neutral-700 rounded-3xl overflow-hidden">
+                <CardContent className="p-12">
+                  <Badge className="mb-6 bg-white/10 text-white border-white/20">
+                    Editor's Choice
+                  </Badge>
+                  <h3 className="text-4xl font-semibold leading-snug">
+                    {book.title}
+                  </h3>
+                  <p className="text-neutral-400 mt-3">Published {book.year}</p>
 
-nav{
-  display:flex;
-  gap:30px;
-}
+                  <p className="text-neutral-300 mt-8 max-w-2xl leading-relaxed">
+                    {book.description}
+                  </p>
 
-nav a{
-  text-decoration:none;
-  color:var(--text);
-  font-size:14px;
-  opacity:0.7;
-  transition:0.3s;
-}
+                  <div className="mt-10 flex gap-4">
+                    <Button className="rounded-xl bg-white text-black hover:bg-neutral-200">
+                      Preview
+                    </Button>
+                    <Button className="rounded-xl bg-emerald-600 hover:bg-emerald-500">
+                      Buy — ${book.price}
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </section>
+      )}
 
-nav a:hover{
-  opacity:1;
-  color:var(--accent);
-}
+      {/* LIBRARY */}
+      <section className="max-w-6xl mx-auto px-6 pb-28">
+        <h2 className="text-2xl font-semibold tracking-wide mb-12">
+          Complete Collection
+        </h2>
 
-/* Mobile menu */
-@media(max-width:768px){
-  nav{
-    position:fixed;
-    top:0;
-    right:-100%;
-    height:100vh;
-    width:70%;
-    background:var(--bg);
-    flex-direction:column;
-    padding:100px 40px;
-    transition:0.4s;
-  }
-  nav.active{
-    right:0;
-  }
-  .menu-toggle{
-    display:block;
-  }
-}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {regular.map((book, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+            >
+              <Card className="group bg-neutral-900 border-neutral-800 hover:border-neutral-600 transition-all rounded-2xl overflow-hidden">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start">
+                    <BookOpen className="text-neutral-500 group-hover:text-white transition" />
+                    <span className="text-xs text-neutral-600">{book.year}</span>
+                  </div>
 
-/* Parallax hero */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 10%;
-  background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover fixed;
-  color:white;
-  position:relative;
-}
+                  <h3 className="mt-6 font-medium leading-snug line-clamp-2">
+                    {book.title}
+                  </h3>
 
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-}
+                  <p className="text-neutral-500 text-sm mt-3 line-clamp-3">
+                    {book.description}
+                  </p>
 
-.hero-content{
-  position:relative;
-  max-width:700px;
-}
+                  <div className="mt-6 flex gap-2">
+                    <Button
+                      variant="secondary"
+                      className="flex-1 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200"
+                    >
+                      Preview
+                    </Button>
+                    <Button className="flex-1 rounded-xl bg-emerald-600 hover:bg-emerald-500">
+                      Buy
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-.hero h1{
-  font-family:'Cormorant Garamond', serif;
-  font-size:64px;
-  margin-bottom:20px;
-}
-
-.hero button{
-  margin-top:30px;
-  padding:12px 28px;
-  border:1px solid white;
-  background:none;
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.hero button:hover{
-  background:white;
-  color:black;
-}
-
-/* Section */
-.section{
-  padding:120px 10%;
-}
-
-.section h2{
-  font-family:'Cormorant Garamond', serif;
-  font-size:40px;
-  margin-bottom:60px;
-}
-
-/* Book opening animation */
-.book-preview{
-  width:200px;
-  height:260px;
-  background:#9c7c5b;
-  position:relative;
-  cursor:pointer;
-  transform-style:preserve-3d;
-  transition:transform 1s;
-}
-
-.book-preview:hover{
-  transform:rotateY(-30deg);
-}
-
-.book-preview::before{
-  content:'DX Manuscript';
-  position:absolute;
-  color:white;
-  font-family:'Cormorant Garamond', serif;
-  padding:20px;
-}
-
-/* Modal */
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.6);
-  justify-content:center;
-  align-items:center;
-}
-
-.modal-content{
-  background:var(--bg);
-  padding:40px;
-  max-width:500px;
-}
-
-.modal button{
-  margin-top:20px;
-}
-
-/* Footer */
-footer{
-  padding:60px;
-  text-align:center;
-  border-top:1px solid var(--line);
-  font-size:13px;
-}
-
-/* Ambient audio hidden */
-audio{
-  display:none;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">DX Archive</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="books.html">Collection</a>
-    <a href="#" onclick="toggleDark()">Dark Mode</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Where Words Are Given Room to Breathe</h1>
-    <p>An independent literary archive.</p>
-    <button onclick="goPage('books.html')">Enter Library</button>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Preview Manuscript</h2>
-  <div class="book-preview" onclick="openModal()"></div>
-</section>
-
-<footer>
-  © 2026 DX Archive. All rights reserved.
-</footer>
-
-<!-- Modal -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-    <h3>Chapter Preview</h3>
-    <p>“Some stories do not end. They simply fade into quieter rooms.”</p>
-    <button onclick="closeModal()">Close</button>
-  </div>
-</div>
-
-<!-- Ambient piano -->
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-/* Page transition */
-function goPage(url){
-  document.body.classList.add("fade-out");
-  setTimeout(()=>{window.location=url},500);
-}
-
-/* Dark mode save */
-function toggleDark(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-10 text-center text-neutral-500 text-sm">
+        © {new Date().getFullYear()} DX Archive — Digital Library of Writings
+      </footer>
+    </div>
   );
 }
-if(localStorage.getItem("theme")==="dark"){
-  document.body.classList.add("dark");
-}
-
-/* Mobile menu */
-function toggleMenu(){
-  document.getElementById("nav").classList.toggle("active");
-}
-
-/* Modal */
-function openModal(){
-  document.getElementById("modal").style.display="flex";
-}
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
-</script>
-
-</body>
-</html>
