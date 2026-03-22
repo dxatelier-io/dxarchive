@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DX Archive — Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f12;
+      --card:#18181c;
+      --soft:#232329;
+      --text:#f5f5f7;
+      --muted:#a1a1aa;
+      --accent:#ffffff;
+      --line:#2a2a33;
+      --success:#10b981;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:radial-gradient(circle at top, #1a1a22, var(--bg) 60%);
+      color:var(--text);
+    }
+
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
+      margin:0;
+      letter-spacing:.5px;
+    }
+
+    .container{
+      width:min(920px,92%);
+      margin:auto;
+    }
+
+    .header{
+      padding:60px 0 30px;
+      text-align:center;
+    }
+
+    .header h1{
+      font-size:42px;
+    }
+
+    .header p{
+      color:var(--muted);
+      margin-top:12px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:28px;
+      margin:40px 0 80px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:28px;
+    }
+
+    .section-title{
+      font-size:18px;
+      margin-bottom:18px;
+    }
+
+    .book{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+    }
+
+    .cover{
+      width:90px;
+      height:130px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#2a2a33,#1b1b22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:32px;
+    }
+
+    .meta small{
+      color:var(--muted);
+      display:block;
+      margin-top:6px;
+      line-height:1.6;
+    }
+
+    .price{
+      margin-top:14px;
+      font-size:22px;
+    }
+
+    .methods{
+      display:grid;
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .method{
+      border:1px solid var(--line);
+      background:var(--soft);
+      padding:16px 18px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .method:hover{border-color:#3a3a46}
+
+    .method input{margin-right:10px}
+
+    .pay-btn{
+      margin-top:22px;
+      width:100%;
+      padding:16px;
+      border:none;
+      border-radius:14px;
+      background:var(--success);
+      color:#fff;
+      font-size:15px;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .pay-btn:hover{filter:brightness(1.1)}
+
+    .note{
+      margin-top:16px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      margin:10px 0;
+      color:#d4d4d8;
+      font-size:14px;
+    }
+
+    .total{
+      border-top:1px solid var(--line);
+      margin-top:14px;
+      padding-top:14px;
+      font-size:18px;
+    }
+
+    .back{
+      margin-top:18px;
+      display:inline-block;
+      font-size:13px;
+      color:var(--muted);
+      text-decoration:none;
+    }
+
+    .back:hover{color:#fff}
+
+    @media(max-width:820px){
+      .layout{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Secure Checkout</h1>
+      <p>Complete your purchase to access the digital book</p>
+    </div>
+
+    <div class="layout">
+
+      <div class="card">
+        <div class="section-title">Book Details</div>
+        <div class="book">
+          <div class="cover">📖</div>
+          <div class="meta">
+            <strong>RESET</strong>
+            <small>
+              Digital Edition (PDF / EPUB)<br>
+              Personal reading license<br>
+              Instant download after payment
+            </small>
+            <div class="price">$9.99</div>
+          </div>
+        </div>
+
+        <a href="index.html" class="back">← Return to library</a>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Payment Method</div>
+
+        <div class="methods">
+          <label class="method">
+            <input type="radio" name="pay" checked>
+            QRIS (All E‑Wallets & Mobile Banking)
+          </label>
+
+          <label class="method">
+            <input type="radio" name="pay">
+            Bank Transfer (Manual Verification)
+          </label>
+
+          <label class="method">
+            <input type="radio" name="pay">
+            Credit / Debit Card
+          </label>
+        </div>
+
+        <button class="pay-btn" onclick="payNow()">Pay Securely</button>
+
+        <div class="note">
+          After completing payment, you will receive an email
+          containing the download link for your purchased book.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function payNow(){
+      alert("This is a demo payment page.\n\nConnect this button to:\n• Gumroad\n• Midtrans\n• PayPal\n• Or your preferred payment provider.");
+    }
+  </script>
+
+</body>
+</html>
