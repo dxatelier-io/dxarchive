@@ -1,341 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DX Archive</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>DX Atelier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f0f12;
-      --card:#18181c;
-      --soft:#232329;
-      --text:#f5f5f7;
-      --muted:#a1a1aa;
-      --accent:#ffffff;
-      --accent-soft:#e5e5e5;
-      --buy:#10b981;
-      --buy-hover:#34d399;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:'Inter',sans-serif;
-      background:radial-gradient(circle at top, #1a1a22, var(--bg) 60%);
-      color:var(--text);
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1,h2,h3{
-      font-family:'Playfair Display',serif;
-      letter-spacing:.5px;
-      margin:0;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
     }
 
-    .container{
-      width:min(1200px,92%);
-      margin:auto;
+    h1 {
+      font-size: 20px;
     }
 
-    /* HERO */
-    .hero{
-      padding:120px 0 100px;
-      text-align:center;
+    .back-btn {
+      padding: 6px 12px;
+      background: #333;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
-    .hero h1{
-      font-size:clamp(42px,6vw,72px);
-      font-weight:700;
+    main {
+      flex: 1;
+      padding: 20px;
     }
 
-    .hero p{
-      color:var(--muted);
-      max-width:620px;
-      margin:28px auto 0;
-      line-height:1.8;
-      font-size:18px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
     }
 
-    .hero-buttons{
-      margin-top:48px;
-      display:flex;
-      gap:16px;
-      justify-content:center;
-      flex-wrap:wrap;
+    .card {
+      background: #222;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .btn{
-      padding:16px 32px;
-      border-radius:14px;
-      border:none;
-      font-size:15px;
-      cursor:pointer;
-      transition:.25s;
+    .card:hover {
+      transform: scale(1.05);
+      background: #2c2c2c;
     }
 
-    .btn-primary{
-      background:var(--accent);
-      color:#000;
+    .card i {
+      font-size: 28px;
+      margin-bottom: 10px;
     }
 
-    .btn-primary:hover{background:var(--accent-soft)}
-
-    .btn-secondary{
-      background:var(--soft);
-      color:var(--text);
+    .page {
+      text-align: center;
+      animation: fade 0.3s ease;
     }
 
-    .btn-secondary:hover{background:#2c2c34}
-
-    /* SEARCH */
-    .search-section{
-      border-top:1px solid #ffffff10;
-      border-bottom:1px solid #ffffff10;
-      background:#00000030;
-      backdrop-filter:blur(6px);
-      padding:28px 0;
-      margin-bottom:70px;
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .search-box{
-      display:flex;
-      justify-content:center;
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      padding: 10px;
     }
-
-    .search-box input{
-      width:min(420px,90%);
-      padding:14px 18px;
-      border-radius:12px;
-      border:1px solid #2a2a33;
-      background:var(--card);
-      color:var(--text);
-      font-size:14px;
-    }
-
-    .search-box input:focus{outline:none;border-color:#3a3a46}
-
-    /* FEATURED */
-    .section-title{
-      font-size:26px;
-      margin-bottom:26px;
-    }
-
-    .featured{
-      margin-bottom:100px;
-    }
-
-    .featured-card{
-      background:linear-gradient(135deg,#1d1d24,#16161b);
-      border:1px solid #2b2b35;
-      border-radius:28px;
-      padding:60px;
-    }
-
-    .badge{
-      display:inline-block;
-      padding:6px 14px;
-      border-radius:999px;
-      font-size:12px;
-      background:#ffffff12;
-      border:1px solid #ffffff22;
-      margin-bottom:22px;
-      color:#fff;
-    }
-
-    .featured-card h3{
-      font-size:42px;
-      margin-bottom:10px;
-    }
-
-    .meta{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .desc{
-      color:#d4d4d8;
-      margin-top:28px;
-      max-width:640px;
-      line-height:1.8;
-    }
-
-    .featured-actions{
-      margin-top:38px;
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-
-    /* GRID */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:26px;
-      margin-top:30px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid #2a2a33;
-      border-radius:18px;
-      padding:22px;
-      transition:.25s;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      min-height:260px;
-    }
-
-    .card:hover{
-      transform:translateY(-6px);
-      border-color:#3a3a46;
-    }
-
-    .book-icon{
-      font-size:26px;
-      opacity:.7;
-    }
-
-    .card h4{
-      font-size:18px;
-      margin:18px 0 6px;
-      line-height:1.4;
-    }
-
-    .card p{
-      font-size:13px;
-      color:var(--muted);
-      line-height:1.6;
-    }
-
-    .card-actions{
-      margin-top:18px;
-      display:flex;
-      gap:10px;
-    }
-
-    .btn-preview{
-      flex:1;
-      background:#2a2a33;
-      color:#fff;
-    }
-
-    .btn-preview:hover{background:#34343f}
-
-    .btn-buy{
-      flex:1;
-      background:var(--buy);
-      color:#fff;
-    }
-
-    .btn-buy:hover{background:var(--buy-hover)}
-
-    footer{
-      border-top:1px solid #ffffff10;
-      margin-top:120px;
-      padding:40px 0;
-      text-align:center;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
 
-  <section class="hero container">
-    <h1>DX Archive</h1>
-    <p>
-      digital sanctuary of writings
-    </p>
+<header>
+  <h1>DX Atelier</h1>
+  <button id="backBtn" class="back-btn" style="display:none;">Back</button>
+</header>
 
-    <div class="hero-buttons">
-      <button class="btn btn-primary" onclick="scrollToCollection()">Explore Collection</button>
-      <button class="btn btn-secondary" onclick="scrollToCollection()">Visit Bookstore</button>
-    </div>
-  </section>
+<main id="app"></main>
 
-  <section class="search-section">
-    <div class="container search-box">
-      <input type="text" placeholder="Search titles..." id="searchInput" onkeyup="filterBooks()">
-    </div>
-  </section>
+<footer>
+  © <span id="year"></span> DX Atelier. All rights reserved.
+</footer>
 
-  <section class="container featured">
-    <div class="section-title">Featured Book</div>
-    <div class="featured-card">
-      <div class="badge">DX's Choice</div>
-      <h3>RESET</h3>
-      <div class="meta">Published 2026</div>
-      <div class="desc">
-        a reflective story about love that was real,
-        but not built on complete truth.
+<script>
+  const app = document.getElementById("app");
+  const backBtn = document.getElementById("backBtn");
+
+  function renderHome() {
+    backBtn.style.display = "none";
+    app.innerHTML = `
+      <div class="grid">
+        <div class="card" onclick="renderPage('youtube')">📺<p>YouTube</p></div>
+        <div class="card" onclick="renderPage('spotify')">🎧<p>Spotify Podcast</p></div>
+        <div class="card" onclick="renderPage('archive')">📚<p>DX Archive</p></div>
+        <div class="card" onclick="renderPage('profile')">👤<p>Profil</p></div>
+        <div class="card" onclick="renderPage('contact')">📩<p>Kontak</p></div>
       </div>
-      <div class="featured-actions">
-        <button class="btn btn-secondary" onclick="location.href='preview-reset.html'">
-  Preview
-</button>
-        <button class="btn btn-buy" onclick="demoNotice()">Buy — Rp0</button>
-      </div>
-    </div>
-  </section>
+    `;
+  }
 
-  <section class="container" id="collection">
-    <div class="section-title">Complete Collection</div>
+  function renderPage(type) {
+    backBtn.style.display = "block";
 
-      <!-- LOCKED BOOK -->
-      <div class="card locked" data-title="locked">
-        <div>
-          <div class="book-icon">🔒</div>
-          <h4 class="locked-title">Classified Manuscript</h4>
-          <p class="locked-text">This work is sealed in the archive and will be revealed soon.</p>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-preview" disabled>Locked</button>
-          <button class="btn btn-buy" disabled>Unavailable</button>
-        </div>
-      </div>
+    let content = "";
 
-      <!-- LOCKED BOOK -->
-      <div class="card locked" data-title="locked">
-        <div>
-          <div class="book-icon">🔒</div>
-          <h4 class="locked-title">Restricted Volume</h4>
-          <p class="locked-text">Stored privately. Access will be granted at a later time.</p>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-preview" disabled>Locked</button>
-          <button class="btn btn-buy" disabled>Unavailable</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 DX Archive — digital sanctuary of writings
-  </footer>
-
-  <script>
-    function scrollToCollection(){
-      document.getElementById('collection').scrollIntoView();
+    switch(type) {
+      case 'youtube':
+        content = "Embed YouTube kamu di sini";
+        break;
+      case 'spotify':
+        content = "Embed Spotify kamu di sini";
+        break;
+      case 'archive':
+        content = "Kumpulan karya tulismu";
+        break;
+      case 'profile':
+        content = "Ceritakan tentang dirimu di sini";
+        break;
+      case 'contact':
+        content = "Email / Sosial Media untuk kerja sama";
+        break;
     }
 
-    function filterBooks(){
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
+    app.innerHTML = `
+      <div class="page">
+        <h2>${type.toUpperCase()}</h2>
+        <p style="margin-top:10px; color:#aaa;">${content}</p>
+      </div>
+    `;
+  }
 
-      cards.forEach(card => {
-        const title = card.getAttribute('data-title').toLowerCase();
-        card.style.display = title.includes(input) ? 'flex' : 'none';
-      });
-    }
+  backBtn.onclick = renderHome;
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-    function demoNotice(){
-  alert("This book is not available for purchase yet.\nDX Archive is currently in demo version.\n\nThank you for your interest 🤍");
-}
-  </script>
+  renderHome();
+</script>
 
 </body>
 </html>
