@@ -5,49 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profil - DX Atelier</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin:0;
-      font-family:Poppins, sans-serif;
-      background:#0f0f0f;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
       color:white;
-    }
-
-    .container {
-      max-width:600px;
-      margin:auto;
+      font-family:'Poppins', sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
       padding:20px;
-      text-align:center;
     }
 
-    .avatar {
+    .card {
+      max-width:500px;
+      width:100%;
+      background: rgba(255,255,255,0.03);
+      border-radius:20px;
+      padding:25px;
+      text-align:center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(20px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    .photo {
       width:120px;
       height:120px;
       border-radius:50%;
-      background:#333;
-      margin:20px auto;
+      margin:auto;
+      background-image:url('Snapchat-1694427914.jpg');
+      background-size:cover;
+      background-position:center;
+      border:2px solid rgba(255,255,255,0.1);
     }
 
     h1 {
-      margin:10px 0;
+      margin:15px 0 5px;
+      font-size:22px;
     }
 
-    p {
-      color:#aaa;
+    .quote {
+      font-family:'Playfair Display', serif;
+      font-size:16px;
+      color:#ccc;
+      margin:15px 0;
       line-height:1.6;
     }
+
+    .bio {
+      font-size:14px;
+      color:#aaa;
+      line-height:1.7;
+      margin-top:10px;
+    }
+
+    .social {
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .social a {
+      text-decoration:none;
+      padding:8px 14px;
+      border-radius:10px;
+      background:#222;
+      color:white;
+      font-size:13px;
+      transition:0.3s;
+    }
+
+    .social a:hover {
+      background:#333;
+    }
+
   </style>
 </head>
 
 <body>
 
-<div class="container">
-  <div class="avatar"></div>
+<div class="card">
+
+  <div class="photo"></div>
+
   <h1>DX Atelier</h1>
-  <p>
-    Seorang kreator yang menuangkan perasaan melalui tulisan, suara, dan visual. 
-    DX Atelier adalah ruang dimana cerita, emosi, dan kenangan bertemu dalam satu tempat.
-  </p>
+
+  <div class="quote">
+    “Aku tidak menulis untuk dikenang…<br>
+    aku menulis agar tidak hilang.”
+  </div>
+
+  <div class="bio">
+    Seorang kreator yang menjadikan perasaan sebagai medium.  
+    Melalui tulisan, suara, dan visual, DX Atelier membangun ruang 
+    dimana kenangan tidak benar-benar pergi… hanya berubah bentuk.
+  </div>
+
+  <div class="social">
+    <a href="https://youtube.com/@dxatelier" target="_blank">YouTube</a>
+    <a href="https://open.spotify.com/show/5iUVKyH0MaRBDdYiiNEyRA" target="_blank">Spotify</a>
+  </div>
+
 </div>
 
 </body>
