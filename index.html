@@ -165,7 +165,21 @@
         `;
         break;
       case 'archive':
-        content = "Kumpulan karya tulismu";
+        content = `
+          <div style="text-align:center;">
+            <h2>DX Archive</h2>
+            <p style="color:#aaa; margin-top:10px;">Digital Library by DX Atelier</p>
+
+            <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
+
+              <div class="card" onclick="window.location.href='archive.html'">
+                <h3>Open Library</h3>
+                <p style="color:#aaa; font-size:14px;">Masuk ke DX Archive</p>
+              </div>
+
+            </div>
+          </div>
+        `;
         break;
       case 'profile':
         content = "Ceritakan tentang dirimu di sini";
@@ -187,6 +201,31 @@
   document.getElementById("year").textContent = new Date().getFullYear();
 
   renderHome();
+
+  function openArticle(type) {
+    backBtn.style.display = "block";
+
+    let title = "";
+    let text = "";
+
+    if (type === 'maroon') {
+      title = "Maroon";
+      text = "Aku masih ingat baju maroon yang kamu pakai malam itu... malam dimana semuanya terasa berbeda. Sejak saat itu, aku tahu, aku tidak akan pernah benar-benar sama lagi.";
+    }
+
+    if (type === 'rumah') {
+      title = "Terimakasih Pernah Menjadi Rumah";
+      text = "Ada orang yang datang bukan untuk tinggal selamanya, tapi cukup lama untuk mengajarkan arti pulang... dan bagaimana rasanya kehilangan arah setelahnya.";
+    }
+
+    app.innerHTML = `
+      <div class="page" style="text-align:left; max-width:600px; margin:auto;">
+        <h2>${title}</h2>
+        <p style="margin-top:15px; line-height:1.6; color:#ccc;">${text}</p>
+      </div>
+    `;
+  }
+
 </script>
 
 </body>
