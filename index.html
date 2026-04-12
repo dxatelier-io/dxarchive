@@ -126,10 +126,43 @@
 
     switch(type) {
       case 'youtube':
-        content = "Embed YouTube kamu di sini";
+        content = `
+          <div style="text-align:center;">
+            <h2>DX Atelier YouTube</h2>
+            <p style="color:#aaa; margin-top:5px;">Konten visual & karya kreatif</p>
+
+            <a href="https://youtube.com/@dxatelier" target="_blank">
+              <button style="margin:15px; padding:10px 20px; border:none; border-radius:10px; background:red; color:white; cursor:pointer;">
+                Visit Channel
+              </button>
+            </a>
+
+            <iframe width="100%" height="250"
+            src="https://www.youtube.com/embed?listType=user_uploads&list=dxatelier"
+            frameborder="0" allowfullscreen></iframe>
+          </div>
+        `;
         break;
       case 'spotify':
-        content = "Embed Spotify kamu di sini";
+        content = `
+          <div style="text-align:center;">
+            <h2>DX Atelier Podcast</h2>
+            <p style="color:#aaa; margin-top:5px;">Cerita, pemikiran, dan suara</p>
+
+            <a href="https://open.spotify.com/show/5iUVKyH0MaRBDdYiiNEyRA" target="_blank">
+              <button style="margin:15px; padding:10px 20px; border:none; border-radius:10px; background:#1DB954; color:white; cursor:pointer;">
+                Open in Spotify
+              </button>
+            </a>
+
+            <iframe style="border-radius:12px"
+            src="https://open.spotify.com/embed/show/5iUVKyH0MaRBDdYiiNEyRA"
+            width="100%" height="232"
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+          </div>
+        `;
         break;
       case 'archive':
         content = "Kumpulan karya tulismu";
