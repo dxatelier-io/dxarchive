@@ -60,7 +60,7 @@ window.addEventListener('load', () => {
 
   setTimeout(() => {
     loader.classList.add('hide-loader');
-  }, 1800);
+  }, 1000);
 });
 
 // PAGE TRANSITION
