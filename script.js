@@ -73,7 +73,10 @@ const journalPassword =
 const passwordError =
   document.getElementById('passwordError');
 
-if (journalLock) {
+
+
+// open modal
+
 if (
   journalLock &&
   passwordModal
@@ -92,46 +95,64 @@ if (
 
 }
 
-if (unlockJournal) {
 
-  unlockJournal.addEventListener('click', () => {
 
-    const password =
-      journalPassword.value.toLowerCase();
+// unlock journal
 
-    if (password === 'ixxix') {
+if (
+  unlockJournal &&
+  journalPassword
+) {
 
-      document.body.classList.add(
-        'fade-out'
-      );
+  unlockJournal.addEventListener(
+    'click',
+    () => {
 
-      setTimeout(() => {
+      const password =
+        journalPassword.value
+          .trim()
+          .toLowerCase();
 
-        window.location.href =
-          'journal.html';
+      if (
+        password === 'ixxix'
+      ) {
 
-      }, 500);
+        document.body.classList.add(
+          'fade-out'
+        );
 
-    } else {
+        setTimeout(() => {
 
-      passwordError.style.display =
-        'block';
+          window.location.href =
+            'journal.html';
 
-      journalPassword.classList.add(
-        'shake'
-      );
+        }, 500);
 
-      setTimeout(() => {
+      } else {
 
-        journalPassword.classList.remove(
+        if (passwordError) {
+
+          passwordError.style.display =
+            'block';
+
+        }
+
+        journalPassword.classList.add(
           'shake'
         );
 
-      }, 400);
+        setTimeout(() => {
+
+          journalPassword.classList.remove(
+            'shake'
+          );
+
+        }, 400);
+
+      }
 
     }
-
-  });
+  );
 
 }
 
