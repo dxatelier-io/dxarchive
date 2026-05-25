@@ -74,12 +74,21 @@ const passwordError =
   document.getElementById('passwordError');
 
 if (journalLock) {
+if (
+  journalLock &&
+  passwordModal
+) {
 
-  journalLock.addEventListener('click', () => {
+  journalLock.addEventListener(
+    'click',
+    () => {
 
-    passwordModal.classList.add('show');
+      passwordModal.classList.add(
+        'show'
+      );
 
-  });
+    }
+  );
 
 }
 
