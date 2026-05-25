@@ -59,22 +59,41 @@ if (quote) {
 
 
 // SECRET FOLDER
+// JOURNAL PASSWORD
 
-const secretFolder = document.querySelector('.secret');
+const journalLock =
+  document.querySelector('.journal-lock');
 
-if (secretFolder) {
+const passwordModal =
+  document.getElementById('passwordModal');
 
-  secretFolder.addEventListener('click', () => {
+const unlockJournal =
+  document.getElementById('unlockJournal');
 
-    const password = prompt(
-      'enter password'
-    );
+const journalPassword =
+  document.getElementById('journalPassword');
 
-    if (!password) return;
+const passwordError =
+  document.getElementById('passwordError');
 
-    if (
-      password.toLowerCase() === 'ixxix'
-    ) {
+if (journalLock) {
+
+  journalLock.addEventListener('click', () => {
+
+    passwordModal.classList.add('show');
+
+  });
+
+}
+
+if (unlockJournal) {
+
+  unlockJournal.addEventListener('click', () => {
+
+    const password =
+      journalPassword.value.toLowerCase();
+
+    if (password === 'ixxix') {
 
       document.body.classList.add(
         'fade-out'
@@ -83,20 +102,32 @@ if (secretFolder) {
       setTimeout(() => {
 
         window.location.href =
-          'secret.html';
+          'journal.html';
 
       }, 500);
 
     } else {
 
-      alert('wrong password 👀');
+      passwordError.style.display =
+        'block';
+
+      journalPassword.classList.add(
+        'shake'
+      );
+
+      setTimeout(() => {
+
+        journalPassword.classList.remove(
+          'shake'
+        );
+
+      }, 400);
 
     }
 
   });
 
 }
-
 
 
 // GLOBAL MUSIC SYSTEM
