@@ -34,28 +34,90 @@ secret.addEventListener('click', () => {
 });
 
 // BACKGROUND MUSIC
+// GLOBAL MUSIC SYSTEM
+
 const musicBtn = document.getElementById('musicBtn');
-const bgMusic = new Audio('LOCKEDIN.mp3');
+
+const bgMusic = new Audio('assets/music/LOCKEDIN.mp3');
 
 bgMusic.loop = true;
 bgMusic.volume = 0.4;
 
-let playing = false;
+// restore state
+let isPlaying = localStorage.getItem('musicPlaying') === 'true';
 
-musicBtn.addEventListener('click', async () => {
-  playing = !playing;
+const savedTime = localStorage.getItem('musicTime');
 
-  if (playing) {
+if (savedTime) {
+  bgMusic.currentTime = savedTime;
+}
+
+// autoplay if previously playing
+window.addEventListener('load', async () => {
+
+  if (isPlaying) {
+
     try {
+
       await bgMusic.play();
+
       musicBtn.textContent = '⏸';
-    } catch (error) {
-      console.log('Autoplay blocked by browser');
+
+    } catch (err) {
+
+      console.log('autoplay blocked');
+
     }
-  } else {
-    bgMusic.pause();
-    musicBtn.textContent = '▶';
+
   }
+
+});
+
+// save current time continuously
+setInterval(() => {
+
+  localStorage.setItem(
+    'musicTime',
+    bgMusic.currentTime
+  );
+
+}, 1000);
+
+// play/pause
+musicBtn.addEventListener('click', async () => {
+
+  if (bgMusic.paused) {
+
+    try {
+
+      await bgMusic.play();
+
+      musicBtn.textContent = '⏸';
+
+      localStorage.setItem(
+        'musicPlaying',
+        'true'
+      );
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+  } else {
+
+    bgMusic.pause();
+
+    musicBtn.textContent = '▶';
+
+    localStorage.setItem(
+      'musicPlaying',
+      'false'
+    );
+
+  }
+
 });
 
 // LOADING SCREEN
