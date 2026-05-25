@@ -98,17 +98,17 @@
       </a>
 
       <!-- journal -->
-      <a href="journal.html" class="app-icon glass">
+      <div class="app-icon glass journal-lock">
 
-        <div class="icon">
-          📔
-        </div>
+  <div class="icon">
+    📖
+  </div>
 
-        <p>
-          Journal
-        </p>
+  <p>
+    Journal
+  </p>
 
-      </a>
+      </div>
 
       <!-- gallery -->
       <a href="gallery.html" class="app-icon glass">
@@ -162,19 +162,6 @@
 
       </a>
 
-      <!-- secret --> 
-<div class="app-icon glass secret">
-
-  <div class="icon">
-    🔒
-  </div>
-
-  <p>
-    Secret
-  </p>
-
-</div>
-
     </section>
 
   </main>
@@ -208,6 +195,43 @@
     </p>
 
   </footer>
+
+  <!-- JOURNAL PASSWORD MODAL -->
+
+<div class="password-modal" id="passwordModal">
+
+  <div class="password-box glass">
+
+    <p class="tiny-text">
+      PRIVATE JOURNAL
+    </p>
+
+    <h2>
+      enter password
+    </h2>
+
+    <p class="password-desc">
+      some pages were never
+      meant for everyone.
+    </p>
+
+    <input
+      type="password"
+      id="journalPassword"
+      placeholder="password..."
+    >
+
+    <button id="unlockJournal">
+      unlock journal
+    </button>
+
+    <p class="password-error" id="passwordError">
+      wrong password 👀
+    </p>
+
+  </div>
+
+</div>
 
   <!-- javascript -->
   <script src="script.js"></script>
