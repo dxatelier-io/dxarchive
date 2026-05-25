@@ -105,7 +105,7 @@ const musicBtn =
   document.getElementById('musicBtn');
 
 const bgMusic = new Audio(
-  'assets/music/LOCKEDIN.mp3'
+  'LOCKEDIN.mp3'
 );
 
 bgMusic.loop = true;
