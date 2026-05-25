@@ -92,7 +92,6 @@ modeBtn.addEventListener('click', () => {
     modeBtn.textContent = '🌙';
   }
 });
-```javascript
 const clock = document.getElementById('clock');
 
 function updateClock() {
