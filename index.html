@@ -1,236 +1,100 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DX Atelier</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+  <title>DX</title>
 
-    body {
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-    }
-
-    h1 {
-      font-size: 20px;
-    }
-
-    .back-btn {
-      padding: 6px 12px;
-      background: #333;
-      border: none;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    main {
-      flex: 0;
-      padding: 20px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: #222;
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      background: #2c2c2c;
-    }
-
-    .card i {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .page {
-      text-align: center;
-      animation: fade 0.3s ease;
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      color: #888;
-      padding: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <h1>DX Atelier</h1>
-  <button id="backBtn" class="back-btn" style="display:none;">Back</button>
-</header>
+  <!-- floating doodles -->
+  <div class="doodle star">⭐</div>
+  <div class="doodle heart">💖</div>
+  <div class="doodle cloud">☁️</div>
+  <div class="doodle flower">🌼</div>
+  <div class="doodle sparkle">✨</div>
 
-<main id="app"></main>
+  <!-- wallpaper blur -->
+  <div class="bg-blur"></div>
 
-<footer>
-  © <span id="year"></span> DX Atelier. All rights reserved.
-</footer>
+  <!-- top widgets -->
+  <header class="topbar">
+    <div class="widget">
+      <span>🕒</span>
+      <p id="clock">00:00</p>
+    </div>
 
-<script>
-  const app = document.getElementById("app");
-  const backBtn = document.getElementById("backBtn");
+    <div class="widget quote-box">
+      <span>💭</span>
+      <p id="quote">welcome to DX</p>
+    </div>
+  </header>
 
-  function renderHome() {
-    backBtn.style.display = "none";
-    app.innerHTML = `
-      <div class="grid">
-        <div class="card" onclick="renderPage('youtube')">📺<p>YouTube</p></div>
-        <div class="card" onclick="renderPage('spotify')">🎧<p>Spotify Podcast</p></div>
-        <div class="card" onclick="renderPage('archive')">📚<p>DX Archive</p></div>
-        <div class="card" onclick="renderPage('profile')">👤<p>Profil</p></div>
-        <div class="card" onclick="renderPage('contact')">📩<p>Kontak</p></div>
+  <!-- main homescreen -->
+  <main class="homescreen">
+
+    <div class="welcome-box glass">
+      <p class="tiny-text">personal archive system</p>
+      <h1>DX</h1>
+      <p class="subtitle">
+        a colorful little corner filled with memories,
+        thoughts, chaos, and things i never posted.
+      </p>
+    </div>
+
+    <!-- app icons -->
+    <section class="apps">
+
+      <a href="about.html" class="app-icon glass">
+        <div class="icon">🧸</div>
+        <p>About</p>
+      </a>
+
+      <a href="journal.html" class="app-icon glass">
+        <div class="icon">📔</div>
+        <p>Journal</p>
+      </a>
+
+      <a href="gallery.html" class="app-icon glass">
+        <div class="icon">📸</div>
+        <p>Gallery</p>
+      </a>
+
+      <a href="works.html" class="app-icon glass">
+        <div class="icon">🎨</div>
+        <p>Works</p>
+      </a>
+
+      <a href="contact.html" class="app-icon glass">
+        <div class="icon">💌</div>
+        <p>Contact</p>
+      </a>
+
+      <div class="app-icon glass secret">
+        <div class="icon">🔒</div>
+        <p>Secret</p>
       </div>
-    `;
-  }
 
-  function renderPage(type) {
-    backBtn.style.display = "block";
+    </section>
 
-    let content = "";
+  </main>
 
-    switch(type) {
-      case 'youtube':
-        content = `
-          <div style="text-align:center;">
-            <h2>DX Atelier YouTube</h2>
-            <p style="color:#aaa; margin-top:5px;">Konten visual & karya kreatif</p>
+  <!-- bottom music widget -->
+  <div class="music-player glass">
+    <div>
+      <p class="song">Now Playing</p>
+      <h4>dreaming in colors</h4>
+    </div>
 
-            <a href="https://youtube.com/@dxatelier" target="_blank">
-              <button style="margin:15px; padding:10px 20px; border:none; border-radius:10px; background:red; color:white; cursor:pointer;">
-                Visit Channel
-              </button>
-            </a>
+    <button id="musicBtn">▶</button>
+  </div>
 
-            <iframe width="100%" height="250"
-            src="https://www.youtube.com/embed?listType=user_uploads&list=dxatelier"
-            frameborder="0" allowfullscreen></iframe>
-          </div>
-        `;
-        break;
-      case 'spotify':
-        content = `
-          <div style="text-align:center;">
-            <h2>DX Atelier Podcast</h2>
-            <p style="color:#aaa; margin-top:5px;">Cerita, pemikiran, dan suara</p>
-
-            <a href="https://open.spotify.com/show/5iUVKyH0MaRBDdYiiNEyRA" target="_blank">
-              <button style="margin:15px; padding:10px 20px; border:none; border-radius:10px; background:#1DB954; color:white; cursor:pointer;">
-                Open in Spotify
-              </button>
-            </a>
-
-            <iframe style="border-radius:12px"
-            src="https://open.spotify.com/embed/show/5iUVKyH0MaRBDdYiiNEyRA"
-            width="100%" height="232"
-            frameBorder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-            </iframe>
-          </div>
-        `;
-        break;
-      case 'archive':
-        content = `
-          <div style="text-align:center;">
-            <h2>DX Archive</h2>
-            <p style="color:#aaa; margin-top:10px;">Digital Library by DX Atelier</p>
-
-            <div style="margin-top:20px; display:flex; flex-direction:column; gap:10px;">
-
-              <div class="card" onclick="window.location.href='archive.html'">
-                <h3>Open Library</h3>
-                <p style="color:#aaa; font-size:14px;">Masuk ke DX Archive</p>
-              </div>
-
-            </div>
-          </div>
-        `;
-        break;
-      case 'profile':
-  window.location.href = "profil.html";
-  break;
-        content = "Ceritakan tentang dirimu di sini";
-        break;
-      case 'contact':
-  window.location.href = "kontak.html";
-  break;
-        content = "Email / Sosial Media untuk kerja sama";
-        break;
-    }
-
-    app.innerHTML = `
-      <div class="page">
-        <h2>${type.toUpperCase()}</h2>
-        <p style="margin-top:10px; color:#aaa;">${content}</p>
-      </div>
-    `;
-  }
-
-  backBtn.onclick = renderHome;
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  renderHome();
-
-  function openArticle(type) {
-    backBtn.style.display = "block";
-
-    let title = "";
-    let text = "";
-
-    if (type === 'maroon') {
-      title = "Maroon";
-      text = "Aku masih ingat baju maroon yang kamu pakai malam itu... malam dimana semuanya terasa berbeda. Sejak saat itu, aku tahu, aku tidak akan pernah benar-benar sama lagi.";
-    }
-
-    if (type === 'rumah') {
-      title = "Terimakasih Pernah Menjadi Rumah";
-      text = "Ada orang yang datang bukan untuk tinggal selamanya, tapi cukup lama untuk mengajarkan arti pulang... dan bagaimana rasanya kehilangan arah setelahnya.";
-    }
-
-    app.innerHTML = `
-      <div class="page" style="text-align:left; max-width:600px; margin:auto;">
-        <h2>${title}</h2>
-        <p style="margin-top:15px; line-height:1.6; color:#ccc;">${text}</p>
-      </div>
-    `;
-  }
-
-</script>
-
+  <script src="script.js"></script>
 </body>
-</html>
+  </html>
