@@ -35,7 +35,7 @@ secret.addEventListener('click', () => {
 
 // BACKGROUND MUSIC
 const musicBtn = document.getElementById('musicBtn');
-const bgMusic = new Audio('assets/music/dx-music.mp3');
+const bgMusic = new Audio('LOCKEDIN.mp3');
 
 bgMusic.loop = true;
 bgMusic.volume = 0.4;
