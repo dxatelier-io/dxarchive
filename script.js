@@ -56,9 +56,6 @@ if (quote) {
 
 }
 
-
-
-// SECRET FOLDER
 // JOURNAL PASSWORD
 
 const journalLock =
