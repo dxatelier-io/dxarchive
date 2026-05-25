@@ -29,38 +29,6 @@ body.dark-mode {
   color: white;
 }
 
-.loader-wrapper {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(135deg, #ffdce8, #d9f3ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity .8s ease, visibility .8s ease;
-}
-
-.loader-box {
-  padding: 50px 70px;
-  border-radius: 35px;
-  text-align: center;
-  animation: float 2s ease-in-out infinite;
-}
-
-.loader-box h1 {
-  font-size: 80px;
-}
-
-.loader-box p {
-  margin-top: 10px;
-  letter-spacing: 2px;
-}
-
-.hide-loader {
-  opacity: 0;
-  visibility: hidden;
-}
-
 .mode-toggle {
   border: none;
   padding: 12px 16px;
