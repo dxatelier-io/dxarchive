@@ -54,15 +54,6 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
-// LOADING SCREEN
-window.addEventListener('load', () => {
-  const loader = document.querySelector('.loader-wrapper');
-
-  setTimeout(() => {
-    loader.classList.add('hide-loader');
-  }, 1000);
-});
-
 // PAGE TRANSITION
 const links = document.querySelectorAll('a');
 
