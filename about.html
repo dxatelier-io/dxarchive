@@ -6,32 +6,29 @@
 
   <title>About — DX</title>
 
-  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- css -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="about-page">
 
-  <!-- background blur -->
+  <!-- blur -->
   <div class="bg-blur"></div>
 
-  <!-- floating doodles -->
+  <!-- doodles -->
   <div class="doodle star">⭐</div>
   <div class="doodle heart">💖</div>
   <div class="doodle cloud">☁️</div>
-  <div class="doodle flower">🌼</div>
 
   <!-- topbar -->
   <header class="topbar">
 
     <a href="index.html" class="back-btn glass">
-      ← Home
+      ← home
     </a>
 
     <button id="modeBtn" class="mode-toggle glass">
@@ -41,107 +38,71 @@
   </header>
 
   <!-- main -->
-  <main class="about-container">
+  <main class="about-layout">
 
-    <!-- profile card -->
-    <section class="profile-card glass">
+    <!-- left -->
+    <section class="left-side">
 
-      <div class="profile-image">
+      <div class="photo-wrapper glass">
 
         <img 
-          src="assets/images/IMG-20260525-WA0071.jpg" 
+          src="IMG-20260525-WA0071.jpg"
           alt="DX"
         >
 
-      </div>
-
-      <div class="profile-content">
-
-        <p class="tiny-text">
-          personal profile
-        </p>
-
-        <h1>
-          DX
-        </h1>
-
-        <p class="about-text">
-          just a person trying to turn memories,
-          feelings, chaos, unfinished thoughts,
-          and random midnight emotions into something beautiful.
-        </p>
-
-        <div class="mini-tags">
-
-          <span>🎧 music lover</span>
-          <span>📖 writer</span>
-          <span>🌙 night thinker</span>
-          <span>📸 memory collector</span>
-
+        <div class="photo-sticker">
+          DX archive ★
         </div>
 
       </div>
 
     </section>
 
-    <!-- info cards -->
-    <section class="info-grid">
+    <!-- right -->
+    <section class="right-side">
 
-      <!-- currently -->
-      <div class="info-card glass">
+      <div class="intro-box glass">
 
-        <h3>
-          💭 currently
-        </h3>
+        <p class="tiny-text">
+          WHO IS DX?
+        </p>
 
-        <p>
-          rebuilding myself quietly while pretending everything is okay.
+        <h1>
+          just someone
+          collecting memories.
+        </h1>
+
+        <p class="intro-text">
+          this little website is basically
+          a digital version of my brain:
+          messy, emotional, colorful,
+          nostalgic, and filled with things
+          i never posted anywhere else.
         </p>
 
       </div>
 
-      <!-- favorites -->
-      <div class="info-card glass">
+      <div class="floating-notes">
 
-        <h3>
-          🎀 favorite things
-        </h3>
+        <div class="note glass">
+          <span>🎧</span>
+          playlists are basically emotional time machines
+        </div>
 
-        <p>
-          rainy nights, playlists,
-          old photos, deep conversations,
-          writing random thoughts at 3am.
-        </p>
+        <div class="note glass">
+          <span>🌙</span>
+          most thoughts happen after midnight
+        </div>
 
-      </div>
+        <div class="note glass">
+          <span>📸</span>
+          i take photos to remember feelings
+        </div>
 
-      <!-- personality -->
-      <div class="info-card glass">
-
-        <h3>
-          🧠 personality
-        </h3>
-
-        <p>
-          emotionally complicated,
-          observant,
-          sensitive,
-          sometimes too quiet,
-          sometimes too loud internally.
-        </p>
-
-      </div>
-
-      <!-- quote -->
-      <div class="info-card glass">
-
-        <h3>
-          🌙 note
-        </h3>
-
-        <p>
-          “some memories deserve more than disappearing.”
-        </p>
+        <div class="note glass">
+          <span>📖</span>
+          writing is easier than explaining
+        </div>
 
       </div>
 
@@ -149,7 +110,7 @@
 
   </main>
 
-  <!-- floating music widget -->
+  <!-- floating player -->
   <div class="music-player glass">
 
     <div>
@@ -170,7 +131,6 @@
 
   </div>
 
-  <!-- js -->
   <script src="script.js"></script>
 
 </body>
