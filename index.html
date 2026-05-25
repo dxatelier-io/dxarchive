@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DX</title>
 
+  <title>DX — digital archive</title>
+
+  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- css -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <!-- loading screen -->
   <div class="loader-wrapper">
     <div class="loader-box glass">
       <h1>DX</h1>
-      <p>loading memories...</p>
+      <p>loading digital memories...</p>
     </div>
   </div>
 
@@ -28,82 +33,184 @@
   <div class="doodle flower">🌼</div>
   <div class="doodle sparkle">✨</div>
 
-  <!-- wallpaper blur -->
+  <!-- blurry background -->
   <div class="bg-blur"></div>
 
   <!-- top widgets -->
   <header class="topbar">
-    <button id="modeBtn" class="mode-toggle glass">🌙</button>
-    <div class="widget">
+
+    <!-- dark mode -->
+    <button id="modeBtn" class="mode-toggle glass">
+      🌙
+    </button>
+
+    <!-- clock -->
+    <div class="widget glass">
       <span>🕒</span>
       <p id="clock">00:00</p>
     </div>
 
-    <div class="widget quote-box">
+    <!-- quotes -->
+    <div class="widget quote-box glass">
       <span>💭</span>
-      <p id="quote">welcome to DX</p>
-    </div>
-  </header>
-
-  <!-- main homescreen -->
-  <main class="homescreen">
-
-    <div class="welcome-box glass">
-      <p class="tiny-text">personal archive system</p>
-      <h1>DX</h1>
-      <p class="subtitle">
-        a colorful little corner filled with memories,
-        thoughts, chaos, and things i never posted.
+      <p id="quote">
+        welcome to DX
       </p>
     </div>
+
+  </header>
+
+  <!-- homescreen -->
+  <main class="homescreen">
+
+    <!-- intro card -->
+    <section class="welcome-box glass">
+
+      <p class="tiny-text">
+        private digital archive
+      </p>
+
+      <h1>DX</h1>
+
+      <p class="subtitle">
+        a colorful little internet room filled with
+        memories, midnight thoughts, unfinished feelings,
+        hidden playlists, personal writings,
+        and things i never posted.
+      </p>
+
+    </section>
 
     <!-- app icons -->
     <section class="apps">
 
+      <!-- about -->
       <a href="about.html" class="app-icon glass">
-        <div class="icon">🧸</div>
-        <p>About</p>
+
+        <div class="icon">
+          🧸
+        </div>
+
+        <p>
+          About
+        </p>
+
       </a>
 
+      <!-- journal -->
       <a href="journal.html" class="app-icon glass">
-        <div class="icon">📔</div>
-        <p>Journal</p>
+
+        <div class="icon">
+          📔
+        </div>
+
+        <p>
+          Journal
+        </p>
+
       </a>
 
+      <!-- gallery -->
       <a href="gallery.html" class="app-icon glass">
-        <div class="icon">📸</div>
-        <p>Gallery</p>
+
+        <div class="icon">
+          📸
+        </div>
+
+        <p>
+          Gallery
+        </p>
+
       </a>
 
-      <a href="works.html" class="app-icon glass">
-        <div class="icon">🎨</div>
-        <p>Works</p>
+      <!-- writings -->
+      <a href="writings.html" class="app-icon glass">
+
+        <div class="icon">
+          📖
+        </div>
+
+        <p>
+          Writings
+        </p>
+
       </a>
 
+      <!-- playlist -->
+      <a href="playlist.html" class="app-icon glass">
+
+        <div class="icon">
+          🎧
+        </div>
+
+        <p>
+          Playlist
+        </p>
+
+      </a>
+
+      <!-- contact -->
       <a href="contact.html" class="app-icon glass">
-        <div class="icon">💌</div>
-        <p>Contact</p>
+
+        <div class="icon">
+          💌
+        </div>
+
+        <p>
+          Contact
+        </p>
+
       </a>
 
+      <!-- secret -->
       <div class="app-icon glass secret">
-        <div class="icon">🔒</div>
-        <p>Secret</p>
+
+        <div class="icon">
+          🔒
+        </div>
+
+        <p>
+          Secret
+        </p>
+
       </div>
 
     </section>
 
   </main>
 
-  <!-- bottom music widget -->
+  <!-- music player -->
   <div class="music-player glass">
+
     <div>
-      <p class="song">Now Playing</p>
-      <h4>dreaming in colors</h4>
+
+      <p class="song">
+        now playing
+      </p>
+
+      <h4>
+        dreaming in colors
+      </h4>
+
     </div>
 
-    <button id="musicBtn">▶</button>
+    <button id="musicBtn">
+      ▶
+    </button>
+
   </div>
 
+  <!-- footer -->
+  <footer class="footer-text">
+
+    <p>
+      made quietly by DX ✦
+    </p>
+
+  </footer>
+
+  <!-- javascript -->
   <script src="script.js"></script>
+
 </body>
 </html>
