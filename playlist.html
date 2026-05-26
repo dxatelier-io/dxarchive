@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Playlist — DX</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="playlist.css">
+
+</head>
+
+<body class="playlist-page">
+
+  <!-- blur -->
+  <div class="bg-blur"></div>
+
+  <!-- doodles -->
+  <div class="doodle star">⭐</div>
+  <div class="doodle sparkle">✨</div>
+  <div class="doodle heart">💖</div>
+  <div class="doodle cloud">☁️</div>
+
+  <!-- topbar -->
+  <header class="topbar">
+
+    <a href="index.html" class="back-btn glass">
+      ← home
+    </a>
+
+    <button id="modeBtn" class="mode-toggle glass">
+      🌙
+    </button>
+
+  </header>
+
+  <!-- main -->
+  <main class="playlist-layout">
+
+    <!-- intro -->
+    <section class="playlist-intro glass">
+
+      <p class="tiny-text">
+        MUSIC ARCHIVE
+      </p>
+
+      <h1>
+        playlists
+      </h1>
+
+      <p class="playlist-subtitle">
+        songs attached to memories,
+        sleepless nights,
+        old conversations,
+        and versions of myself
+        i still revisit sometimes.
+      </p>
+
+    </section>
+
+    <!-- playlist feed -->
+    <section class="playlist-feed">
+
+      <!-- playlist card -->
+      <article class="playlist-card glass">
+
+        <div class="playlist-top">
+
+          <div>
+
+            <p class="playlist-date">
+              DX archive • may 2026
+            </p>
+
+            <h2>
+              locked in
+            </h2>
+
+          </div>
+
+          <span class="playlist-tag">
+            🌙 late night archive
+          </span>
+
+        </div>
+
+        <p class="playlist-description">
+          songs that feel like
+          overthinking at 2am,
+          unfinished feelings,
+          quiet breakdowns,
+          and memories i still replay
+          in my head sometimes.
+        </p>
+
+        <!-- spotify embed -->
+        <iframe
+          style="border-radius:20px"
+          src="https://open.spotify.com/embed/playlist/6EqW1oCx94XPa1n6LWApYH?utm_source=generator"
+          width="100%"
+          height="352"
+          frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy">
+        </iframe>
+
+        <!-- extra mood -->
+        <div class="playlist-footer">
+
+          <span>
+            🎧 27 tracks
+          </span>
+
+          <span>
+            💭 emotional archive
+          </span>
+
+          <span>
+            🌃 mostly listened after midnight
+          </span>
+
+        </div>
+
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- floating music player -->
+  <div class="music-player glass">
+
+    <div>
+
+      <p class="song">
+        now playing
+      </p>
+
+      <h4>
+        LOCKED IN
+      </h4>
+
+    </div>
+
+    <button id="musicBtn">
+      ▶
+    </button>
+
+  </div>
+
+  <!-- javascript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
